@@ -7,6 +7,8 @@ public class Iteracter : MonoBehaviour
 {
     [SerializeField] private SpriteRenderer _sprite;
     [SerializeField] private CheckQRGame _checkQRGame;
+    [SerializeField] private CheckQRUI _checkQRUI;
+
 
     private bool isIteractable;
     private PanelOpener panelOpener;
@@ -21,6 +23,7 @@ public class Iteracter : MonoBehaviour
             enabled = false;
             Player.Instance.OnBeginInteract();
             _checkQRGame.BeginGame();
+            _checkQRUI.Open();
             Player.Instance.GetComponent<PlayerMove>().StopMove();
             Player.Instance.GetComponent<PlayerMove>().enabled = false;
         }

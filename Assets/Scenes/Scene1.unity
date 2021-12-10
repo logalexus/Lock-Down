@@ -160,6 +160,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _sprite: {fileID: 1332868686}
   _checkQRGame: {fileID: 1841760716}
+  _checkQRUI: {fileID: 1993535120}
 --- !u!114 &72882680
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2473,7 +2474,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _canvas: {fileID: 1993535117}
   _canvasGroup: {fileID: 1993535121}
-  _caller: {fileID: 0}
   checkQRUITransition: {fileID: 1993535119}
 --- !u!225 &1993535121
 CanvasGroup:

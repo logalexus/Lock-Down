@@ -17,8 +17,12 @@ public class ShakeHand : MonoBehaviour
 
     public void StartShake()
     {
-        StartCoroutine(Shake());
         _mainPosition = transform.position;
+        StartCoroutine(Shake());
+    }
+    public void StopShake()
+    {
+        StopAllCoroutines();
     }
 
     private IEnumerator Shake()

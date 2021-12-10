@@ -12,7 +12,7 @@ public class CheckQRGame : MonoBehaviour
     private void Start()
     {
         _checkQRGameTransition = GetComponent<CheckQRGameTransition>();
-        
+        Player.Instance.CompleteInteract += () => CompleteGame();
     }
 
     public void BeginGame()
@@ -28,7 +28,6 @@ public class CheckQRGame : MonoBehaviour
     {
         _checkQRGameTransition.HideGame(() =>
         {
-            _scanner.StartScane();
             _shakeHand.StartShake();
         });
     }

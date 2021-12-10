@@ -43,6 +43,7 @@ public class Scanner : MonoBehaviour
     {
         _isScanning = true;
         _slider.gameObject.SetActive(true);
+        _slider.value = 0;
         StartCoroutine(ProccessScan());
     }
 
@@ -54,6 +55,7 @@ public class Scanner : MonoBehaviour
             {
                 _isScanning = false;
                 _slider.gameObject.SetActive(false);
+                Player.Instance.OnCompleteInteract();
                 break;
             }
             _slider.value += 1;

@@ -11,12 +11,12 @@ public class CheckQRUI : IteractPanel
     
     private void Start()
     {
-        
+        Player.Instance.CompleteInteract += ()=> Close();
     }
 
-    public override void Open(GameObject caller)
+    public override void Open()
     {
-        base.Open(caller);
+        base.Open();
         checkQRUITransition.OpenAnim();
     }
 
