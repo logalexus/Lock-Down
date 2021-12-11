@@ -27,7 +27,7 @@ public class Citizen : MonoBehaviour
         _speed *= _direction[Random.Range(0, _direction.Count)];
         _animator = GetComponent<Animator>();
         Player.Instance.CompleteInteract += () => _isMove = true;
-        Player.Instance.BeginInteract += StopMove;
+        //Player.Instance.BeginInteract += StopMove;
 
         if(Random.Range(0, 10) > 3)
            _haveMask = true;
@@ -60,7 +60,7 @@ public class Citizen : MonoBehaviour
     }
     public void GoToHome()
     {
-        _citizen.transform.DOMove(_door.transform.position, 1f).SetEase(Ease.InOutQuart);
+        _citizen.transform.DOMove(_door.transform.position, 1f).SetEase(Ease.InOutQuart).OnComplete(()=>Destroy(gameObject));
     }
 
     private void OnDestroy()

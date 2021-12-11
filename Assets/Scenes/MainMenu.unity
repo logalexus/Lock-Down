@@ -1311,6 +1311,7 @@ GameObject:
   - component: {fileID: 4981214884613207001}
   - component: {fileID: 4981214884613207006}
   - component: {fileID: 4981214884613207005}
+  - component: {fileID: 4981214884613207008}
   m_Layer: 5
   m_Name: PlayBtn
   m_TagString: Untagged
@@ -1330,9 +1331,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc3a960fd66d7a54fb88e6f207faab35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _start: {fileID: 4981214884613207006}
-  _sprite: {fileID: 1366693801}
-  _exitBtn: {fileID: 612058257}
 --- !u!114 &4981214884613207006
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1397,3 +1395,18 @@ RectTransform:
   m_AnchoredPosition: {x: 1.9999809, y: 50}
   m_SizeDelta: {x: 379.4474, y: 114.4}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &4981214884613207008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4981214884613207004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 814530076d120854c84a961542e99388, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _start: {fileID: 4981214884613207006}
+  _sprite: {fileID: 1366693801}
+  _exitBtn: {fileID: 612058257}

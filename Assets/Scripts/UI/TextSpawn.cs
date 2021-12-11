@@ -113,7 +113,11 @@ public class TextSpawn : MonoBehaviour
     private void CompliteDialog()
     {
         if (!_isValidQR || !_citizen.HasQRCode)
+        {
             _citizen.GoToHome();
+            Player.Instance.ImpostersFound++;
+        }
+        StopAllCoroutines();
         _checkQRUITransition.HideDialog(() => _dialogueText.text = "");
         _index = 0;
         Player.Instance.OnCompleteInteract();
