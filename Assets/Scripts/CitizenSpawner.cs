@@ -24,8 +24,8 @@ public class CitizenSpawner : MonoBehaviour
         {
             var instance = Instantiate(_citizen);
             SetCitizenAnimation(instance);
-
             var door = _spawnDoors[Random.Range(0, _spawnDoors.Count)];
+            instance.SetDoor(door);
             instance.transform.position = new Vector2(door.transform.position.x, door.transform.position.y - 2);
 
             Animator doorAnimator = door.GetComponent<Animator>();

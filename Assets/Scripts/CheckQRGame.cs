@@ -1,35 +1,36 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.Events;
 
 public class CheckQRGame : MonoBehaviour
 {
     [SerializeField] private ShakeHand _shakeHand;
     [SerializeField] private Scanner _scanner;
+    [SerializeField] private CheckQRGameTransition _checkQRGameTransition;
+    [SerializeField] private CheckQRUITransition _checkQRUITransition;
 
 
-    private CheckQRGameTransition _checkQRGameTransition;
+    public UnityAction BeginPlay;
+    public UnityAction<bool> CompletePlay;
 
-    private void Start()
-    {
-        _checkQRGameTransition = GetComponent<CheckQRGameTransition>();
-        Player.Instance.CompleteInteract += () => CompleteGame();
-    }
+    
 
     public void BeginGame()
     {
+        _checkQRUITransition.ShowProgressBar();
         _checkQRGameTransition.ShowGame(() =>
         {
             _scanner.StartScane();
             _shakeHand.StartShake();
+            BeginPlay?.Invoke();
         });
     }
 
-    public void CompleteGame()
+    public void CompleteGame(bool result)
     {
+        CompletePlay?.Invoke(result);
         _shakeHand.StopShake();
-        _checkQRGameTransition.HideGame(() =>
-        {
-            
-        });
+        _checkQRUITransition.HideProgressBar();
+        _checkQRGameTransition.HideGame();
     }
 }
