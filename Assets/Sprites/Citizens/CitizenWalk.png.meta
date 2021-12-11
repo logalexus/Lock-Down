@@ -139,7 +139,7 @@ TextureImporter:
         x: 0
         y: 30
         width: 10
-        height: 30
+        height: 29
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -160,7 +160,7 @@ TextureImporter:
         x: 10
         y: 30
         width: 11
-        height: 30
+        height: 29
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -202,7 +202,7 @@ TextureImporter:
         x: 33
         y: 30
         width: 15
-        height: 30
+        height: 29
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -223,7 +223,7 @@ TextureImporter:
         x: 49
         y: 30
         width: 17
-        height: 30
+        height: 29
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -265,7 +265,7 @@ TextureImporter:
         x: 84
         y: 30
         width: 10
-        height: 30
+        height: 29
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -283,7 +283,7 @@ TextureImporter:
       name: CitizenWalk_7
       rect:
         serializedVersion: 2
-        x: 1
+        x: 0
         y: 0
         width: 10
         height: 29
@@ -304,12 +304,12 @@ TextureImporter:
       name: CitizenWalk_8
       rect:
         serializedVersion: 2
-        x: 29
+        x: 10
         y: 0
-        width: 17
-        height: 30
+        width: 11
+        height: 29
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -325,12 +325,12 @@ TextureImporter:
       name: CitizenWalk_9
       rect:
         serializedVersion: 2
-        x: 47
+        x: 22
         y: 0
-        width: 15
+        width: 10
         height: 30
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -346,12 +346,12 @@ TextureImporter:
       name: CitizenWalk_10
       rect:
         serializedVersion: 2
-        x: 74
+        x: 33
         y: 0
-        width: 11
-        height: 30
+        width: 15
+        height: 29
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -367,12 +367,12 @@ TextureImporter:
       name: CitizenWalk_11
       rect:
         serializedVersion: 2
-        x: 85
+        x: 49
         y: 0
-        width: 10
-        height: 30
+        width: 17
+        height: 29
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -388,7 +388,7 @@ TextureImporter:
       name: CitizenWalk_12
       rect:
         serializedVersion: 2
-        x: 18
+        x: 67
         y: 0
         width: 10
         height: 30
@@ -409,10 +409,10 @@ TextureImporter:
       name: CitizenWalk_13
       rect:
         serializedVersion: 2
-        x: 63
+        x: 84
         y: 0
         width: 10
-        height: 30
+        height: 29
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
