@@ -8,14 +8,17 @@ public class PlayerMove : MonoBehaviour
 
     private float _verticalInput;
     private float _horizontalInput;
-    private float _speed = 10f;
+    private float _speed = 8f;
     private bool _isMove = false;
 
     private Animator _animator;
+    private SpriteRenderer _spriteRenderer;
 
     private void Start()
     {
         _animator = GetComponent<Animator>();
+        _spriteRenderer = GetComponent<SpriteRenderer>();
+
         Player.Instance.BeginInteract += () => _isMove = false;
         Player.Instance.CompleteInteract += () => _isMove = true;
         GameController.Instance.StartGame += () => _isMove = true;
@@ -40,12 +43,23 @@ public class PlayerMove : MonoBehaviour
 
     public void StopMove()
     {
-        _player.velocity = Vector3.zero; 
+        _player.velocity = Vector3.zero;
         PlayAnimation();
     }
 
     private void PlayAnimation()
     {
-        //
+        SetDirection();
+        if (_player.velocity != Vector2.zero)
+            _animator.SetInteger("AnimState", 1);
+        else _animator.SetInteger("AnimState", 0);
+        
     }
+
+    void SetDirection()
+    {
+        if (_horizontalInput < 0) _spriteRenderer.flipX = false;
+        else if (_horizontalInput > 0) _spriteRenderer.flipX = true;
+    }
+
 }

@@ -21,7 +21,11 @@ public class GameController : MonoBehaviour
         
     }
     
-    
+    IEnumerator Start()
+    {
+        yield return null;
+        OnStartGame();
+    }
 
     public void OnGameOver()
     {
@@ -30,6 +34,7 @@ public class GameController : MonoBehaviour
 
     public void OnStartGame()
     {
+
         StartGame?.Invoke();
     }
     

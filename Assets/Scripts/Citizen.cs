@@ -26,5 +26,12 @@ public class Citizen : MonoBehaviour
             _citizen.velocity = new Vector2(_speed, _citizen.velocity.y);
         }
         //PlayAnimation();
+        SetDirection();
+    }
+
+    void SetDirection()
+    {
+        if (_citizen.velocity.x < 0) GetComponent<SpriteRenderer>().flipX = false;
+        else if (_citizen.velocity.x > 0) GetComponent<SpriteRenderer>().flipX = true;
     }
 }

@@ -5,13 +5,8 @@ using UnityEngine;
 public class CitizenSpawner : MonoBehaviour
 {
     [SerializeField] private Citizen _citizen;
-    [SerializeField] private List<Transform> _spawnPoints;
-    [SerializeField] private Sprite _doorClose;
-    [SerializeField] private Sprite _doorOpen;
-
-
-
-
+    [SerializeField] private List<GameObject> _spawnDoors;
+    [SerializeField] private List<RuntimeAnimatorController> _citizensAnimators;
     private void Start()
     {
         GameController.Instance.StartGame += ()=>
@@ -21,7 +16,6 @@ public class CitizenSpawner : MonoBehaviour
         Player.Instance.BeginInteract += () => StopAllCoroutines();
         Player.Instance.CompleteInteract += () => StartCoroutine(Spawn());
 
-
     }
 
     private IEnumerator Spawn()
@@ -29,13 +23,24 @@ public class CitizenSpawner : MonoBehaviour
         while(true)
         {
             var instance = Instantiate(_citizen);
-            var door = _spawnPoints[Random.Range(0, _spawnPoints.Count)];
-            instance.transform.position = door.position;
-            door.GetComponent<SpriteRenderer>().sprite = _doorOpen;
+            SetCitizenAnimation(instance);
+
+            var door = _spawnDoors[Random.Range(0, _spawnDoors.Count)];
+            instance.transform.position = new Vector2(door.transform.position.x, door.transform.position.y - 2);
+
+            Animator doorAnimator = door.GetComponent<Animator>();
+            doorAnimator.SetBool("isOpen", true);
             yield return new WaitForSeconds(1);
-            door.GetComponent<SpriteRenderer>().sprite = _doorClose;
+            doorAnimator.SetBool("isOpen", false);
             yield return new WaitForSeconds(5);
         }
+    }
+
+    private void SetCitizenAnimation(Citizen citizen)
+    {
+        Animator citizenAnimator = citizen.GetComponent<Animator>();
+        citizenAnimator.runtimeAnimatorController = _citizensAnimators[Random.Range(0, _citizensAnimators.Count)];
+        citizenAnimator.SetBool("isMove", true);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
