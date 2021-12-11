@@ -26,6 +26,7 @@ public class Scanner : MonoBehaviour
             _isScanning = false;
             StopAllCoroutines();
             _fillRect.color = Color.red;
+            AudioController.Instance.PlaySFX(AudioController.Instance.Sounds.Error);
             Sequence seq = DOTween.Sequence();
             seq.Join(DOTween.To(()=>_slider.value, x=> _slider.value = x, 0, 1).SetEase(Ease.InOutQuart));
             seq.Join(_slider.transform.DOShakePosition(1, 10, 10, 90, false, false));

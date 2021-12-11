@@ -10,20 +10,14 @@ public class Iteracter : MonoBehaviour
     
     private bool isIteractable;
     private Citizen _citizen;
-
-    private void Start()
-    {
-        //Player.Instance.CompleteInteract += () => isIteractable = true;
-    }
-
-
+    
     private void Update()
     {
         if (isIteractable && Input.GetKeyDown(KeyCode.E))
         {
             isIteractable = false;
-            AudioController.Instance.PlaySFX(AudioController.Instance.Sounds.Click);
             Player.Instance.OnBeginInteract();
+            AudioController.Instance.PlaySFX(AudioController.Instance.Sounds.Human);
             _citizen.StopMove();
             _checkQRUI.StartDialog(_citizen);
             _citizen.Checked = true;

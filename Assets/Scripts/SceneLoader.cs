@@ -7,8 +7,7 @@ using DG.Tweening;
 
 public class SceneLoader : MonoBehaviour
 {
-    public Button _start;
-
+    [SerializeField] public Button _start;
     [SerializeField] private Image _sprite;
     [SerializeField] private Button _exitBtn;
 

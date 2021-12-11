@@ -12,8 +12,8 @@ public class CheckQRGame : MonoBehaviour
 
     public UnityAction BeginPlay;
     public UnityAction<bool> CompletePlay;
-
     
+
 
     public void BeginGame()
     {

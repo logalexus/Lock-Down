@@ -33,20 +33,16 @@ public class AudioController : MonoBehaviour
         {
             StopAmbient();
             StopSFXLoop();
+            _sfxSource.volume = 0;
         };
         _musicSource1 = gameObject.AddComponent<AudioSource>();
         _sfxSourceLoop = gameObject.AddComponent<AudioSource>();
         _sfxSource = gameObject.AddComponent<AudioSource>();
-        _ambientSource = gameObject.AddComponent<AudioSource>();
 
         _musicSource1.volume = 0;
         _musicSource1.loop = true;
         _sfxSourceLoop.loop = true;
-        _ambientSource.loop = true;
-        //_ambientSource.clip = Sounds.AmbientFactory;
-        _ambientSource.volume = 0;
-        //PlayMusic(_sounds.MainTheme);
-        StartAmbient();
+        PlayMusic(_sounds.MainTheme);
     }
 
     public void PlayMusic(AudioClip music)
