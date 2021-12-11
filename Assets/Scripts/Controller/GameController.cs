@@ -27,8 +27,6 @@ public class GameController : MonoBehaviour
         OnStartGame();
     }
 
-
-
     public void OnGameOver()
     {
         GameOver?.Invoke();
@@ -36,6 +34,7 @@ public class GameController : MonoBehaviour
 
     public void OnStartGame()
     {
+
         StartGame?.Invoke();
     }
     

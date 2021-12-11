@@ -21,7 +21,7 @@ public class CheckQRGameTransition : MonoBehaviour
 
     public void ShowGame(TweenCallback tweenCallback)
     {
-        transform.position = new Vector3(_player.position.x, transform.position.y, 0);
+        transform.position = new Vector3(Camera.main.transform.position.x, transform.position.y, 0);
 
         _hand.DOMoveY(_hand.position.y - _offsetHide, 1).SetEase(Ease.InOutQuart).OnComplete(tweenCallback);
         _scanner.DOMoveY(_scanner.position.y + _offsetHide, 1).SetEase(Ease.InOutQuart);
