@@ -14,7 +14,9 @@ public class CheckQRGameTransition : MonoBehaviour
 
     private void Start()
     {
-        HideGame();
+        _hand.DOMoveY(_hand.position.y + _offsetHide, 0).SetEase(Ease.InOutQuart);
+        _scanner.DOMoveY(_scanner.position.y - _offsetHide, 0).SetEase(Ease.InOutQuart);
+        _back.DOMoveY(_hand.position.y + _offsetHide, 0).SetEase(Ease.InOutQuart);
         _player = Player.Instance.GetComponent<Transform>();
 
     }

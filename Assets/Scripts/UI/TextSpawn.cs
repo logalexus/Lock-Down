@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class TextSpawn : MonoBehaviour
 {
+    [SerializeField] private TextMeshProUGUI _speakerText;
     [SerializeField] private TextMeshProUGUI _dialogueText;
     [SerializeField] private CheckQRGame _checkQRGame;
     [SerializeField] private CheckQRUITransition _checkQRUITransition;
@@ -55,6 +56,7 @@ public class TextSpawn : MonoBehaviour
 
     public void Begin(Citizen citizen)
     {
+        _speakerText.text = "Вы: ";
         _citizen = citizen;
         _isIteractable = true;
         NextSentence();
@@ -94,7 +96,7 @@ public class TextSpawn : MonoBehaviour
                     if (!_citizen.haveMask)
                     {
                         StartCoroutine(WriteSentence(GetRandomPhrase(_policeFineMaskSentences)));
-                        CompliteDialog();
+                        _index++;
                         break;
                     }
                     if (_citizen.HasQRCode)
@@ -112,14 +114,13 @@ public class TextSpawn : MonoBehaviour
                     if (_citizen.HasQRCode)
                     {
                         if (_isValidQR)
-                            StartCoroutine(WriteSentence(GetRandomPhrase(_citizenQREndSentences)));
+                            StartCoroutine(WriteSentence(GetRandomPhrase(_policeSuccessSentences)));
                         else
                             StartCoroutine(WriteSentence(GetRandomPhrase(_policeWrongQRSentences)));
                     }
                     else
                     {
                         StartCoroutine(WriteSentence(GetRandomPhrase(_citizenNonQREndSentences)));
-                        CompliteDialog();
                     }
                     break;
                 case 4:
@@ -133,10 +134,15 @@ public class TextSpawn : MonoBehaviour
     private void CompliteDialog()
     {
         if (!_isValidQR || !_citizen.HasQRCode || !_citizen.haveMask)
+        {
             _citizen.GoToHome();
+            Player.Instance.ImpostersFound++;
+        }
         _checkQRUITransition.HideDialog(() => _dialogueText.text = "");
         _index = 0;
-       // StopAllCoroutines();
+        _isTyping = false;
+        _speakerText.text = "Вы: ";
+        StopAllCoroutines();
         Player.Instance.OnCompleteInteract();
     }
 
@@ -147,6 +153,8 @@ public class TextSpawn : MonoBehaviour
 
     IEnumerator WriteSentence(string sentence)
     {
+        if (_index % 2 == 0) _speakerText.text = "Вы: ";
+        else _speakerText.text = "Гражданин: ";
         _dialogueText.text = "";
         _isTyping = true;
         foreach (char character in sentence.ToCharArray())
