@@ -12,25 +12,23 @@ public class Citizen : MonoBehaviour
     private float _speed = 4f;
     private Animator _animator;
     private List<int> _direction;
-    private bool _haveMask;
+    
     private GameObject _door;
 
     public bool Checked = false;
     public bool HasQRCode;
-
+    public bool haveMask;
 
     void Start()
     {
         HasQRCode = Random.Range(0, 10) <= 5;
+        haveMask = Random.Range(0, 10) > 3;
 
         _direction = new List<int>() { -1, 1 };
         _speed *= _direction[Random.Range(0, _direction.Count)];
         _animator = GetComponent<Animator>();
         Player.Instance.CompleteInteract += () => _isMove = true;
         Player.Instance.BeginInteract += StopMove;
-
-        if(Random.Range(0, 10) > 3)
-           _haveMask = true;
     }
 
     private void FixedUpdate()
@@ -39,7 +37,7 @@ public class Citizen : MonoBehaviour
             _citizen.velocity = new Vector2(_speed, _citizen.velocity.y);
         SetDirection();
         _animator.SetBool("isMove", _isMove);
-        _animator.SetBool("haveMask", _haveMask);
+        _animator.SetBool("haveMask", haveMask);
     }
 
     private void SetDirection()

@@ -27,16 +27,22 @@ public class TextSpawn : MonoBehaviour
     private List<string> _citizenNonQREndSentences;
     private List<string> _citizenQRSentences;
     private List<string> _citizenQREndSentences;
-    
+    private List<string> _policeAskMaskSentences;
+    private List<string> _citizenAskMaskSentences;
+    private List<string> _policeFineMaskSentences;
 
     private void Start()
     {
+        _policeAskMaskSentences = new List<string>() { "Здраствуйте, почему вы без маски?", "Здраствуйте, где ваша маска?" };
+        _citizenAskMaskSentences = new List<string>() { "Она дома...", "А зачем мне маска, я же не в помещении!?", "Какая маска?" };
+        _policeFineMaskSentences = new List<string>() { "Я выписываю вам штраф, отправляйтесь домой", "Во время локдауна выходить из дома без маски запрещено, идите домой", "Идите домой, пока я не проверил еще и ваш QR-код" };
+
         _policeStartSentences = new List<string>(){ "Здраствуйте, предъявите Ваш QR-код!"};
         _policeFineSentences = new List<string>() { "Извините, но я вынужден вас оштрафовать и отправить обратно домой", "Нельзя выходить из дома без QR-кода! Заплатите штраф и возвращайтесь домой" };
         _policeWrongQRSentences = new List<string>() { "Ваш код подделка, Вы оштрафованы, теперь отправляйтесь домой", "Ваш код недействителен, заплатите штраф и возвращайтесь домой" };
         _policeSuccessSentences = new List<string>() { "Всё верно, можете идти", "QR действителен, можете идти" };
         _citizenQRSentences = new List<string>(){ "Да, конечно, вот!", "Вот, смотрите", "Всегда с собой, сканируйте" };
-        _citizenQREndSentences = new List<string>() { "Отлично, до свидания", "Хорошо, спаcbбо"};
+        _citizenQREndSentences = new List<string>() { "Отлично, до свидания", "Хорошо, спасибо"};
         _citizenNonQREndSentences = new List<string>() { "Как так, нееет", "Ну и ладно" };
         _citizenNonQRSentences = new List<string>() { "У меня его нет", "У меня нет такого", "Еще не выдали" };
     }
@@ -68,15 +74,29 @@ public class TextSpawn : MonoBehaviour
             switch (_index)
             {
                 case 0:
-                    StartCoroutine(WriteSentence(GetRandomPhrase(_policeStartSentences)));
+                    if (!_citizen.haveMask)
+                        StartCoroutine(WriteSentence(GetRandomPhrase(_policeAskMaskSentences)));
+                    else
+                        StartCoroutine(WriteSentence(GetRandomPhrase(_policeStartSentences)));
                     break;
                 case 1:
+                    if (!_citizen.haveMask)
+                    {
+                        StartCoroutine(WriteSentence(GetRandomPhrase(_citizenAskMaskSentences)));
+                        break;
+                    }
                     if (_citizen.HasQRCode)
                         StartCoroutine(WriteSentence(GetRandomPhrase(_citizenQRSentences)));
                     else
                         StartCoroutine(WriteSentence(GetRandomPhrase(_citizenNonQRSentences)));
                     break;
                 case 2:
+                    if (!_citizen.haveMask)
+                    {
+                        StartCoroutine(WriteSentence(GetRandomPhrase(_policeFineMaskSentences)));
+                        CompliteDialog();
+                        break;
+                    }
                     if (_citizen.HasQRCode)
                     {
                         StartCoroutine(WriteSentence("Сейчас просканирую"));
@@ -112,10 +132,11 @@ public class TextSpawn : MonoBehaviour
 
     private void CompliteDialog()
     {
-        if (!_isValidQR || !_citizen.HasQRCode)
+        if (!_isValidQR || !_citizen.HasQRCode || !_citizen.haveMask)
             _citizen.GoToHome();
         _checkQRUITransition.HideDialog(() => _dialogueText.text = "");
         _index = 0;
+       // StopAllCoroutines();
         Player.Instance.OnCompleteInteract();
     }
 
