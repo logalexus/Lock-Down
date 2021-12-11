@@ -32,7 +32,7 @@ public class CitizenSpawner : MonoBehaviour
             doorAnimator.SetBool("isOpen", true);
             yield return new WaitForSeconds(1);
             doorAnimator.SetBool("isOpen", false);
-            yield return new WaitForSeconds(5);
+            yield return new WaitForSeconds(4);
         }
     }
 

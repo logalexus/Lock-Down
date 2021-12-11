@@ -9,7 +9,7 @@ public class WorkTimer : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _timerUI;
     [SerializeField] private FinalScreenGoodWork _finalScreenGoodWork;
 
-    private float time = 300;
+    private float time = 180;
     private float _timeLeft = 0f;
 
     private void Start()

@@ -12,8 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af9f44f37b9e26a4da29c64016baa70b, type: 3}
   m_Name: Sounds
   m_EditorClassIdentifier: 
-  _mainTheme: {fileID: 0}
-  _ambientFactory: {fileID: 0}
-  _warnignSignal: {fileID: 0}
-  _explosion: {fileID: 0}
-  _click: {fileID: 0}
+  _mainTheme: {fileID: 8300000, guid: d36f0b7dc4ace354f86b5cc3fa5cdb82, type: 3}
+  _human: {fileID: 8300000, guid: a98dfa0f10fdf994cadfbb6b8f395539, type: 3}
+  _error: {fileID: 8300000, guid: 11517075926242046b7ce6e35fe80c00, type: 3}

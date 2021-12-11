@@ -13,13 +13,7 @@ public class TextSpawnForFinal : MonoBehaviour
     private float _dialogueSpeed = 0.05f;
     private bool _isTyping = false;
 
-    private void Start()
-    {
-        NextSentence();
-    }
-    
-
-    void NextSentence()
+    public void NextSentence()
     {
         if (_index <= _sentences.Length - 1)
         {
