@@ -42,7 +42,6 @@ public class Scanner : MonoBehaviour
     public void StartScane()
     {
         _isScanning = true;
-        _slider.gameObject.SetActive(true);
         _slider.value = 0;
         StartCoroutine(ProccessScan());
     }
@@ -54,11 +53,12 @@ public class Scanner : MonoBehaviour
             if (_slider.value == 100)
             {
                 _isScanning = false;
-                _slider.gameObject.SetActive(false);
                 Player.Instance.OnCompleteInteract();
+                StopAllCoroutines();
                 break;
             }
-            _slider.value += 1;
+            if (_isScanning)
+                _slider.value += 1;
             yield return new WaitForSeconds(0.05f);
         }
     }

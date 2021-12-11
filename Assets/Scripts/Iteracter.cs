@@ -11,8 +11,6 @@ public class Iteracter : MonoBehaviour
 
 
     private bool isIteractable;
-    private PanelOpener panelOpener;
-    //private Breaking breaking;
 
 
     private void Update()
@@ -24,15 +22,13 @@ public class Iteracter : MonoBehaviour
             Player.Instance.OnBeginInteract();
             _checkQRGame.BeginGame();
             _checkQRUI.Open();
-            Player.Instance.GetComponent<PlayerMove>().StopMove();
-            Player.Instance.GetComponent<PlayerMove>().enabled = false;
+            //Player.Instance.GetComponent<PlayerMove>().enabled = false;
         }
     }
     private void OnTriggerStay2D(Collider2D collider)
     {
         if (collider.transform.TryGetComponent(out Citizen c))
         {
-            //panelOpener = collider.transform.GetComponent<PanelOpener>();
             isIteractable = true;
             _sprite.DOFade(1, 0.5f);
         }

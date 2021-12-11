@@ -11,20 +11,28 @@ public class Citizen : MonoBehaviour
 
     void Start()
     {
-        Player.Instance.BeginInteract += () => _isMove = false;
-        Player.Instance.CompleteInteract += () => _isMove = true;
-
         _citizen = GetComponent<Rigidbody2D>();
         _direction = new List<int>() { -1, 1 };
         _speed *= _direction[Random.Range(0, _direction.Count)];
+
+        Player.Instance.CompleteInteract += () => _isMove = true;
+        Player.Instance.BeginInteract += () =>
+        {
+            _isMove = false;
+            StopMove();
+        };
+        
     }
 
     private void FixedUpdate()
     {
         if (_isMove)
-        {
             _citizen.velocity = new Vector2(_speed, _citizen.velocity.y);
-        }
         //PlayAnimation();
+    }
+
+    private void StopMove()
+    {
+        _citizen.velocity = Vector3.zero;
     }
 }

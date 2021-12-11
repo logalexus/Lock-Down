@@ -20,8 +20,14 @@ public class GameController : MonoBehaviour
             Destroy(gameObject);
         
     }
-    
-    
+
+    IEnumerator Start()
+    {
+        yield return null;
+        OnStartGame();
+    }
+
+
 
     public void OnGameOver()
     {

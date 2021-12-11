@@ -16,10 +16,13 @@ public class PlayerMove : MonoBehaviour
     private void Start()
     {
         _animator = GetComponent<Animator>();
-        Player.Instance.BeginInteract += () => _isMove = false;
+        Player.Instance.BeginInteract += () =>
+        {
+            _isMove = false;
+            StopMove();
+        };
         Player.Instance.CompleteInteract += () => _isMove = true;
         GameController.Instance.StartGame += () => _isMove = true;
-        GameController.Instance.OnStartGame();
     }
 
     private void Update()
@@ -38,7 +41,7 @@ public class PlayerMove : MonoBehaviour
         PlayAnimation();
     }
 
-    public void StopMove()
+    private void StopMove()
     {
         _player.velocity = Vector3.zero; 
         PlayAnimation();

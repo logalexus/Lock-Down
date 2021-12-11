@@ -26,9 +26,10 @@ public class CheckQRGame : MonoBehaviour
 
     public void CompleteGame()
     {
+        _shakeHand.StopShake();
         _checkQRGameTransition.HideGame(() =>
         {
-            _shakeHand.StartShake();
+            
         });
     }
 }
