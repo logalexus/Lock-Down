@@ -5,6 +5,7 @@ using DG.Tweening;
 public class CheckQRGameTransition : MonoBehaviour
 {
     [SerializeField] private Transform _hand;
+    [SerializeField] private Transform _back;
     [SerializeField] private Transform _scanner;
     
     private float _offsetHide = 30;
@@ -13,8 +14,7 @@ public class CheckQRGameTransition : MonoBehaviour
 
     private void Start()
     {
-        _hand.DOMoveY(_hand.position.y + _offsetHide, 0);
-        _scanner.DOMoveY(_scanner.position.y - _offsetHide, 0);
+        HideGame();
         _player = Player.Instance.GetComponent<Transform>();
 
     }
@@ -25,13 +25,14 @@ public class CheckQRGameTransition : MonoBehaviour
 
         _hand.DOMoveY(_hand.position.y - _offsetHide, 1).SetEase(Ease.InOutQuart).OnComplete(tweenCallback);
         _scanner.DOMoveY(_scanner.position.y + _offsetHide, 1).SetEase(Ease.InOutQuart);
-
+        _back.DOMoveY(_hand.position.y - _offsetHide, 1).SetEase(Ease.InOutQuart);
     }
 
-    public void HideGame(TweenCallback tweenCallback)
+    public void HideGame()
     {
-        _hand.DOMoveY(_hand.position.y + _offsetHide, 1).SetEase(Ease.InOutQuart).OnComplete(tweenCallback);
+        _hand.DOMoveY(_hand.position.y + _offsetHide, 1).SetEase(Ease.InOutQuart);
         _scanner.DOMoveY(_scanner.position.y - _offsetHide, 1).SetEase(Ease.InOutQuart);
+        _back.DOMoveY(_hand.position.y + _offsetHide, 1).SetEase(Ease.InOutQuart);
 
     }
 

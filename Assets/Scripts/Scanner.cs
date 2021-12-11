@@ -8,6 +8,8 @@ using DG.Tweening;
 public class Scanner : MonoBehaviour
 {
     [SerializeField] private Slider _slider;
+    [SerializeField] private CheckQRGame _checkQRGame;
+
 
     private bool _isScanning = false;
     private Image _fillRect;
@@ -36,9 +38,6 @@ public class Scanner : MonoBehaviour
         }
     }
     
-    
-
-
     public void StartScane()
     {
         _isScanning = true;
@@ -53,8 +52,8 @@ public class Scanner : MonoBehaviour
             if (_slider.value == 100)
             {
                 _isScanning = false;
-                Player.Instance.OnCompleteInteract();
                 StopAllCoroutines();
+                _checkQRGame.CompleteGame(UnityEngine.Random.Range(0, 10) <= 7);
                 break;
             }
             if (_isScanning)

@@ -5,30 +5,37 @@ using DG.Tweening;
 using UnityEngine.UI;
 using TMPro;
 
-public class CheckQRUI : IteractPanel
+public class CheckQRUI : MonoBehaviour
 {
-    [SerializeField] private CheckQRUITransition checkQRUITransition;
-    
+    [SerializeField] private CheckQRUITransition _checkQRUITransition;
+    [SerializeField] private CheckQRGame _checkQRGame;
+    [SerializeField] private TextSpawn _textSpawn;
+    [SerializeField] private Button _scanButton;
+
     private void Start()
     {
-        Player.Instance.CompleteInteract += ()=> Close();
-    }
-
-    public override void Open()
-    {
-        base.Open();
-        checkQRUITransition.OpenAnim();
-    }
-
-    public override void Close()
-    {
-        checkQRUITransition.CloseAnim().OnComplete(()=> 
+        _scanButton.onClick.AddListener(() =>
         {
-            Player.Instance.GetComponent<Iteracter>().enabled = true;
-            Player.Instance.GetComponent<PlayerMove>().enabled = true;
-            base.Close();
+            _scanButton.interactable = false;
+            _checkQRUITransition.HideDialog();
+            _checkQRGame.BeginGame();
+        });
+        _checkQRGame.CompletePlay += (result) =>
+        {
+            _checkQRUITransition.ShowDialog(()=> { });
+            _checkQRUITransition.HideScanButton();
+            _textSpawn.ContinueDialog(result);
+        };
+    }
+
+    public void StartDialog(Citizen citizen)
+    {
+        _checkQRUITransition.ShowDialog(()=>
+        {
+            _textSpawn.Begin(citizen);
         });
     }
+    
 
     
 }
