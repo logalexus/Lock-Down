@@ -120,11 +120,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-<<<<<<< HEAD
   m_Offset: {x: 0.00419569, y: 0.0068290234}
-=======
-  m_Offset: {x: 0.02468276, y: -0.3759352}
->>>>>>> remotes/origin/master
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -135,11 +131,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-<<<<<<< HEAD
   m_Size: {x: 0.8353853, y: 2.4141364}
-=======
-  m_Size: {x: 1.7504783, y: 2.8518703}
->>>>>>> remotes/origin/master
   m_EdgeRadius: 0
 --- !u!114 &7660366427775191771
 MonoBehaviour:
@@ -154,12 +146,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _citizen: {fileID: 2429936734101971179}
-<<<<<<< HEAD
   _maskSprite: {fileID: 0}
-=======
-  Checked: 0
-  HasQRCode: 0
->>>>>>> remotes/origin/master
 --- !u!95 &3552023372295701320
 Animator:
   serializedVersion: 3

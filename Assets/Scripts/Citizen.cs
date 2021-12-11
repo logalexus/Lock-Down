@@ -12,15 +12,12 @@ public class Citizen : MonoBehaviour
     private float _speed = 4f;
     private Animator _animator;
     private List<int> _direction;
-<<<<<<< HEAD
     private bool _haveMask;
-=======
     private GameObject _door;
 
     public bool Checked = false;
     public bool HasQRCode;
 
->>>>>>> remotes/origin/master
 
     void Start()
     {
@@ -30,14 +27,10 @@ public class Citizen : MonoBehaviour
         _speed *= _direction[Random.Range(0, _direction.Count)];
         _animator = GetComponent<Animator>();
         Player.Instance.CompleteInteract += () => _isMove = true;
-<<<<<<< HEAD
         Player.Instance.BeginInteract += StopMove;
 
         if(Random.Range(0, 10) > 3)
            _haveMask = true;
-=======
-        
->>>>>>> remotes/origin/master
     }
 
     private void FixedUpdate()
@@ -65,14 +58,10 @@ public class Citizen : MonoBehaviour
     {
         _door = door;
     }
-<<<<<<< HEAD
-=======
-    
     public void GoToHome()
     {
         _citizen.transform.DOMove(_door.transform.position, 1f).SetEase(Ease.InOutQuart);
     }
->>>>>>> remotes/origin/master
 
     private void OnDestroy()
     {

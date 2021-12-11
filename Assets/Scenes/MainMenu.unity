@@ -1332,6 +1332,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _start: {fileID: 4981214884613207006}
   _sprite: {fileID: 1366693801}
+  _exitBtn: {fileID: 612058257}
 --- !u!114 &4981214884613207006
 MonoBehaviour:
   m_ObjectHideFlags: 0
